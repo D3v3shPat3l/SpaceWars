@@ -5,19 +5,19 @@ public class GameController : MonoBehaviour
 {
     public int score = 0;
     public int level = 1;
-    public int missilesLeft = 30;
+    public int lasersLeft = 30;
 
     [SerializeField] private TextMeshProUGUI myScoreText;
     [SerializeField] private TextMeshProUGUI myLevelText;
-    [SerializeField] private TextMeshProUGUI myMissileText;
+    [SerializeField] private TextMeshProUGUI myLaserText;
 
-    private int destroyMissilePoints = 25;
+    private int destroyUFOPoints = 25;
 
     void Start()
     {
         UpdateScoreText();
         UpdateLevelText();
-        UpdateMissilesText();
+        UpdateLasersText();
     }
 
     void Update()
@@ -35,14 +35,14 @@ public class GameController : MonoBehaviour
         myLevelText.text = "Level: " + level; 
     }
 
-    public void UpdateMissilesText()
+    public void UpdateLasersText()
     {
-        myMissileText.text = "Lasers: " + missilesLeft;
+        myLaserText.text = "Lasers: " + lasersLeft;
     }
 
-    public void AddMissilePoints()
+    public void AddUFOPoints()
     {
-        score += destroyMissilePoints;
+        score += destroyUFOPoints;
         UpdateScoreText();
     }
 }
