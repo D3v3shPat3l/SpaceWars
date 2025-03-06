@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-   [SerializeField] GameObject missilePrefab;
-   [SerializeField] GameObject missileLauncherPrefab;
+   [SerializeField] GameObject laserPrefab;
+   [SerializeField] GameObject LaserGunPrefab;
     [SerializeField] private Texture2D cursorTexture;
     private Vector2 cursorHotspot;
     private GameController myGameController;
@@ -17,11 +17,11 @@ public class CursorController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && myGameController.missilesLeft>0)
+        if (Input.GetMouseButtonDown(0) && myGameController.lasersLeft>0)
         {
-            Instantiate(missilePrefab, missileLauncherPrefab.transform.position, Quaternion.identity);
-            myGameController.missilesLeft--;
-            myGameController.UpdateMissilesText();
+            Instantiate(laserPrefab, LaserGunPrefab.transform.position, Quaternion.identity);
+            myGameController.lasersLeft--;
+            myGameController.UpdateLasersText();
         }
     }
 }
