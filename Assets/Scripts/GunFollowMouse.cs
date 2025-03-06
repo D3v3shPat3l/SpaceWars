@@ -4,9 +4,9 @@ public class GunFollowMouse : MonoBehaviour
 {
     public Transform gun; 
     public Transform pivotPoint; 
-    public float minRotation = -90f; 
+    public float minRotation = 0f; 
     public float maxRotation = 90f; 
-    public float rotationSpeed = 10f;
+    public float rotationSpeed = 40f;
 
     void Update()
     {
