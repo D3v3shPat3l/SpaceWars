@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7815834225630067915}
   - component: {fileID: 7595146412287027352}
   - component: {fileID: 690648560954184808}
+  - component: {fileID: -4191198381704982620}
   m_Layer: 0
   m_Name: Lasergun-hidden
   m_TagString: Defenders
@@ -134,3 +135,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.02, y: 1.8431929}
   m_EdgeRadius: 0
+--- !u!114 &-4191198381704982620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966922159791738999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5b89b190773f24cb337786c7b9c86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

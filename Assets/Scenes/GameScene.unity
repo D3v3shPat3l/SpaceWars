@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left over Laser Bonus: 0'
+  m_text: 'Left over Laser Bonus: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 688720308}
   - component: {fileID: 688720307}
   m_Layer: 5
-  m_Name: Lvl1
+  m_Name: Lvl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Total Bonus: 0'
+  m_text: 'Total Bonus: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left over Planet Bonus: 0'
+  m_text: 'Left over Planet Bonus: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1525,7 +1525,7 @@ GameObject:
   - component: {fileID: 1114001059}
   - component: {fileID: 1114001058}
   m_Layer: 5
-  m_Name: BackgroundLvl1
+  m_Name: BackgroundLvl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1605,7 +1605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1228456525
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2183,9 +2183,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1493866589}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: TotalBonusText
+      value: 
+      objectReference: {fileID: 689638819}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: endOfRoundPanel
       value: 
       objectReference: {fileID: 1228456524}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: LaserBonusPoints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: PlanetsBonusPoints
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: LeftOverLaserBonusText
+      value: 
+      objectReference: {fileID: 185680785}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: LeftOverPlanetBonusText
+      value: 
+      objectReference: {fileID: 784490055}
     - target: {fileID: 1051462180809313096, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: m_Name
       value: GameController
