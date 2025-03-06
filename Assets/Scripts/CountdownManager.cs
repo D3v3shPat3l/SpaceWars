@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 
+//Manages the transitions between 4 images (countdown).
 public class CountdownManager : MonoBehaviour
 {
     public Image countdownImage;     
