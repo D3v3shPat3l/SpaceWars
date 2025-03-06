@@ -2183,6 +2183,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1493866589}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: CountdownText
+      value: 
+      objectReference: {fileID: 110535037}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: TotalBonusText
       value: 
       objectReference: {fileID: 689638819}
