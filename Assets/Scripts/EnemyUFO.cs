@@ -22,6 +22,7 @@ public class EnemyUFO : MonoBehaviour
     {
         if (col.tag == "Defenders")
         {
+            FindObjectOfType<GameController>().EnemyUFODestroyed();
             UFOExplode();       
             Destroy(col.gameObject);
      

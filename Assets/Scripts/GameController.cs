@@ -1,11 +1,16 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private GameObject endOfRoundPanel;
+    EnemyUFOSpawner myEnemyUFOSpawner;
     public int score = 0;
     public int level = 1;
     public int lasersLeft = 30;
+    private int enemyUFOThisRound = 10;
+    private int enemyUFOLeftInRound = 0;
 
     [SerializeField] private TextMeshProUGUI myScoreText;
     [SerializeField] private TextMeshProUGUI myLevelText;
@@ -15,13 +20,20 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
+
         UpdateScoreText();
         UpdateLevelText();
         UpdateLasersText();
+        StartRound();
     }
 
     void Update()
     {
+        if (enemyUFOLeftInRound <= 0)
+        {
+            endOfRoundPanel.SetActive(true);
+        }
         
     }
 
@@ -43,6 +55,19 @@ public class GameController : MonoBehaviour
     public void AddUFOPoints()
     {
         score += destroyUFOPoints;
+        EnemyUFODestroyed();
         UpdateScoreText();
+    }
+
+    public void EnemyUFODestroyed()
+    {
+        enemyUFOLeftInRound--;
+    }
+
+    private void StartRound()
+    {
+        myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
+        enemyUFOLeftInRound = enemyUFOThisRound;
+        myEnemyUFOSpawner.StartRound();
     }
 }

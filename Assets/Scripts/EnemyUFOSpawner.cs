@@ -14,20 +14,23 @@ public class EnemyUFOSpawner : MonoBehaviour
 
     float yValue;
 
-    void Start()
+    void Awake()
     {
         minX = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).x;
         maxX = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0)).x;
 
         float randomX = Random.Range(minX, maxX);
         yValue = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
-
-       StartCoroutine(SpawnUFO());
     }
 
     void Update()
     {
 
+    }
+
+    public void StartRound()
+    {
+        StartCoroutine(SpawnUFO());
     }
 
     public IEnumerator SpawnUFO()
