@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
+// The initial loading scene where options are managed.
 public class MainMenu : MonoBehaviour
 {
     void Start()
