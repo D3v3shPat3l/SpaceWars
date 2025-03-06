@@ -7,17 +7,17 @@ using NUnit.Framework.Constraints;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject endOfRoundPanel;
     EnemyUFOSpawner myEnemyUFOSpawner;
     public int score = 0;
     public int level = 1;
+    public float enemyUFOSpeed = 1f;
     public int lasersLeft = 30;
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
-
+    [SerializeField] private float enemyUFOSpeedMulti = 2f;
     [SerializeField] private TextMeshProUGUI myScoreText;
     [SerializeField] private TextMeshProUGUI myLevelText;
     [SerializeField] private TextMeshProUGUI myLaserText;
@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI LeftOverPlanetBonusText;
     [SerializeField] private TextMeshProUGUI TotalBonusText;
     [SerializeField] private TextMeshProUGUI CountdownText;
+    [SerializeField] private GameObject endOfRoundPanel;
 
     private int destroyUFOPoints = 25;
 
@@ -73,6 +74,12 @@ public class GameController : MonoBehaviour
         enemyUFOLeftInRound--;
     }
 
+    public void LaserLauncherHit()
+    {
+        lasersLeft -=10;
+        UpdateLasersText();
+    }
+
     private void StartRound()
     {
         myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
@@ -103,15 +110,16 @@ public class GameController : MonoBehaviour
         CountdownText.text = "NEXT ROUND IN: 2";
         yield return new WaitForSeconds(1f);
         CountdownText.text = "NEXT ROUND IN: 1";
+        yield return new WaitForSeconds(1f);
     
         endOfRoundPanel.SetActive(false);
+        isRoundOver = false;
+        lasersLeft = 30;
+        enemyUFOSpeed *= enemyUFOSpeedMulti;
 
         StartRound();
-        level ++;
+        level++;
         UpdateLevelText();
-        lasersLeft = 30;
         UpdateLasersText();
-
-
     }
 }

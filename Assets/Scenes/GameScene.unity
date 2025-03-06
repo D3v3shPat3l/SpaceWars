@@ -2203,6 +2203,10 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: enemyUFOSpeedMulti
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: LeftOverLaserBonusText
       value: 
       objectReference: {fileID: 185680785}
