@@ -21,6 +21,7 @@ public class EnemyUFO : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         if (transform.position == target)
         {
+            myGameController.EnemyUFODestroyed();
             UFOExplode();
         }
     }

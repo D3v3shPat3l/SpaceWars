@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine.TestTools;
 using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
+    public int currentLasersLoaded = 0;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
@@ -26,16 +28,21 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TotalBonusText;
     [SerializeField] private TextMeshProUGUI CountdownText;
     [SerializeField] private GameObject endOfRoundPanel;
+    [SerializeField] private TextMeshProUGUI inLauncherText;
 
     private int destroyUFOPoints = 25;
 
     void Start()
     {
+        currentLasersLoaded = 10;
+        lasersLeft -= 10;
+
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
 
         UpdateScoreText();
         UpdateLevelText();
         UpdateLasersText();
+        UpdateInLauncherText();
         StartRound();
     }
 
@@ -60,6 +67,12 @@ public class GameController : MonoBehaviour
     public void UpdateLasersText()
     {
         myLaserText.text = "Lasers: " + lasersLeft;
+        UpdateInLauncherText();
+    }
+
+    public void UpdateInLauncherText()
+    {
+        inLauncherText.text = "In Launcher: " + currentLasersLoaded;
     }
 
     public void AddUFOPoints()
@@ -74,10 +87,42 @@ public class GameController : MonoBehaviour
         enemyUFOLeftInRound--;
     }
 
+    public void FiredLaser()
+    {
+        if (currentLasersLoaded > 0)
+        {
+            currentLasersLoaded--;
+        }
+        if (currentLasersLoaded == 0)
+        {
+            if (lasersLeft >= 10)
+            {
+            currentLasersLoaded = 10;
+            lasersLeft -= 10;
+            }
+            else
+            {
+            currentLasersLoaded = lasersLeft;
+            lasersLeft = 0;
+            }
+        }
+        UpdateLasersText();
+    }
+
     public void LaserLauncherHit()
     {
-        lasersLeft -=10;
+        if (lasersLeft >= 10)
+        {
+            currentLasersLoaded = 10;
+            lasersLeft -= 10;
+        }
+        else
+        {
+            currentLasersLoaded = lasersLeft;
+            lasersLeft = 0;
+        }
         UpdateLasersText();
+        UpdateInLauncherText();
     }
 
     private void StartRound()

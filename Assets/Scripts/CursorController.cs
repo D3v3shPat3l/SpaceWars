@@ -17,11 +17,10 @@ public class CursorController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && myGameController.lasersLeft>0)
+        if (Input.GetMouseButtonDown(0) && myGameController.currentLasersLoaded>0)
         {
             Instantiate(laserPrefab, LaserGunPrefab.transform.position, Quaternion.identity);
-            myGameController.lasersLeft--;
-            myGameController.UpdateLasersText();
+            myGameController.FiredLaser();
         }
     }
 }
