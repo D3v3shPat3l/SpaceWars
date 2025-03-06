@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
         AssignButton("Exitbtn", QuitGame);
         AssignButton("Settingsbtn", OpenSettings);
         AssignButton("Leaderbtn", OpenLeaderboard);
-        AssignButton("Invobtn", OpenInventory);
     }
 
     void AssignButton(string buttonName, UnityEngine.Events.UnityAction action)
@@ -56,11 +55,5 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Opening Leaderboard...");
         SceneManager.LoadScene("LeaderboardScene");  
-    }
-
-    public void OpenInventory()
-    {
-        Debug.Log("Opening Inventory...");
-        SceneManager.LoadScene("InventoryScene");  
     }
 }

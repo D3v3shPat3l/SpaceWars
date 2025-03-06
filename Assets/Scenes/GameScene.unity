@@ -1131,7 +1131,7 @@ MonoBehaviour:
   pivotPoint: {fileID: 1972742329}
   minRotation: 0
   maxRotation: 90
-  rotationSpeed: 10
+  rotationSpeed: 40
 --- !u!4 &2044116048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2454757875941763072, guid: 599a2d4e6c7208741829fd144e4fcb74, type: 3}
