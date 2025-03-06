@@ -46,4 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   level: 1
-  missilesLeft: 30
+  lasersLeft: 30
+  myScoreText: {fileID: 0}
+  myLevelText: {fileID: 0}
+  myLaserText: {fileID: 0}
