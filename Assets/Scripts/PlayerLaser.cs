@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerLaser : MonoBehaviour
 {
-
     private Vector2 target;
     [SerializeField] private float speed = 1f;
     [SerializeField] private GameObject explosionPrefab;
