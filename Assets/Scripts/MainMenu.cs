@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// The initial loading scene where options are managed.
 public class MainMenu : MonoBehaviour
 {
     void Start()
@@ -36,26 +35,21 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("Starting Game...");
         SceneManager.LoadScene("CountdownScene");  
-
     }
 
     public void QuitGame()
     {
-        Debug.Log("Game is exiting...");
         Application.Quit();
     }
 
     public void OpenSettings()
     {
-        Debug.Log("Opening Settings...");
-        SceneManager.LoadScene("SettingScene");  
+        SceneManager.LoadScene("SettingsScene");  
     }
 
     public void OpenLeaderboard()
     {
-        Debug.Log("Opening Leaderboard...");
         SceneManager.LoadScene("LeaderboardScene");  
     }
 }
