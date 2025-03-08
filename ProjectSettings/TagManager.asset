@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Defenders
   - Explosions
+  - Planets
   layers:
   - Default
   - TransparentFX

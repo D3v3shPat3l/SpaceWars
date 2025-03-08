@@ -1955,6 +1955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lasergun-hidden
       objectReference: {fileID: 0}
+    - target: {fileID: 7595146412287027352, guid: ce0fd7aadc417fc4aacd9057a339b3a7, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7815834225630067915, guid: ce0fd7aadc417fc4aacd9057a339b3a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.5
@@ -2127,10 +2131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: earthmiddle
       objectReference: {fileID: 0}
-    - target: {fileID: 2245705561166564849, guid: 599a2d4e6c7208741829fd144e4fcb74, type: 3}
-      propertyPath: m_TagString
-      value: Defenders
-      objectReference: {fileID: 0}
     - target: {fileID: 2454757875941763072, guid: 599a2d4e6c7208741829fd144e4fcb74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.8
@@ -2171,14 +2171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9161541844259568584, guid: 599a2d4e6c7208741829fd144e4fcb74, type: 3}
-      propertyPath: m_Size.y
-      value: 1.125769
-      objectReference: {fileID: 0}
-    - target: {fileID: 9161541844259568584, guid: 599a2d4e6c7208741829fd144e4fcb74, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.33711547
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2195,14 +2187,6 @@ PrefabInstance:
     - target: {fileID: 19833997229730428, guid: 50b907ce2426dc944b382dd5b0af351b, type: 3}
       propertyPath: m_Name
       value: earthleft
-      objectReference: {fileID: 0}
-    - target: {fileID: 2141202672304769625, guid: 50b907ce2426dc944b382dd5b0af351b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.96168995
-      objectReference: {fileID: 0}
-    - target: {fileID: 2141202672304769625, guid: 50b907ce2426dc944b382dd5b0af351b, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.34915495
       objectReference: {fileID: 0}
     - target: {fileID: 9078300607416720065, guid: 50b907ce2426dc944b382dd5b0af351b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2257,14 +2241,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 688720310}
     m_Modifications:
-    - target: {fileID: 704259993716727916, guid: 8f95985ebccaaef49b74b9ce16abd4e4, type: 3}
-      propertyPath: m_Size.y
-      value: 0.839277
-      objectReference: {fileID: 0}
-    - target: {fileID: 704259993716727916, guid: 8f95985ebccaaef49b74b9ce16abd4e4, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.4253615
-      objectReference: {fileID: 0}
     - target: {fileID: 5601079006721739835, guid: 8f95985ebccaaef49b74b9ce16abd4e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 177.3
@@ -2360,7 +2336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: enemyUFOSpeedMulti
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: LeftOverLaserBonusText

@@ -5,6 +5,8 @@ using System.Collections;
 using UnityEngine.TestTools;
 using NUnit.Framework.Constraints;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class GameController : MonoBehaviour
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
     public int currentLasersLoaded = 0;
+    public int planetCounter = 0;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
@@ -38,6 +41,7 @@ public class GameController : MonoBehaviour
         lasersLeft -= 10;
 
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
+        planetCounter = GameObject.FindObjectsOfType<planets>().Length;
 
         UpdateScoreText();
         UpdateLevelText();
@@ -53,7 +57,13 @@ public class GameController : MonoBehaviour
         isRoundOver = true;
         StartCoroutine(EndOfRound());
        }
+       if (planetCounter <= 1)
+       {
+        SceneManager.LoadScene("GameOverScene");  
+       }
     }
+
+
     public void UpdateScoreText()
     {
         myScoreText.text = "Score: " + score;
@@ -161,6 +171,8 @@ public class GameController : MonoBehaviour
         isRoundOver = false;
         lasersLeft = 30;
         enemyUFOSpeed *= enemyUFOSpeedMulti;
+        currentLasersLoaded = 10;
+        lasersLeft -= 10;
 
         StartRound();
         level++;

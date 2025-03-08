@@ -36,7 +36,8 @@ public class EnemyUFO : MonoBehaviour
             {
                 myGameController.LaserLauncherHit();
                 return;
-            }     
+            } 
+            myGameController.planetCounter--;    
             Destroy(col.gameObject);
      
         }
