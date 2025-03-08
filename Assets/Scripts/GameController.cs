@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
+     private int destroyUFOPoints = 25;
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
     [SerializeField] private int LaserBonusPoints = 5;
@@ -31,10 +32,17 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TotalBonusText;
     [SerializeField] private TextMeshProUGUI CountdownText;
     [SerializeField] private GameObject endOfRoundPanel;
+    [SerializeField] private GameObject earthLeft;
+    [SerializeField] private GameObject earthMiddle;
+    [SerializeField] private GameObject earthRight;
+    [SerializeField] private GameObject marsLeft;
+    [SerializeField] private GameObject marsMiddle;
+    [SerializeField] private GameObject marsRight;
+    [SerializeField] private GameObject nepLeft;
+    [SerializeField] private GameObject nepMiddle;
+    [SerializeField] private GameObject nepRight;
     [SerializeField] private TextMeshProUGUI inLauncherText;
-
-    private int destroyUFOPoints = 25;
-
+    
     void Start()
     {
         currentLasersLoaded = 10;
@@ -178,6 +186,25 @@ public class GameController : MonoBehaviour
         score += totalBonus;
         UpdateScoreText();
 
+        if (score >= 7000)
+        {
+        earthLeft.SetActive(false);
+        earthMiddle.SetActive(false);
+        earthRight.SetActive(false);
+        marsLeft.SetActive(true);
+        marsMiddle.SetActive(true);
+        marsRight.SetActive(true);
+        }
+        if (score >= 14000)
+        {
+        marsLeft.SetActive(false);
+        marsMiddle.SetActive(false);
+        marsRight.SetActive(false);
+        nepLeft.SetActive(true);
+        nepMiddle.SetActive(true);
+        nepRight.SetActive(true);
+        }
+        
         CountdownText.text = "NEXT ROUND IN: 3";
         yield return new WaitForSeconds(1f);
         CountdownText.text = "NEXT ROUND IN: 2";
