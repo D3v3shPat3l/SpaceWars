@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PersistentMusic : MonoBehaviour
+public class Music : MonoBehaviour
 {
-    private static PersistentMusic instance;
+    private static Music instance;
 
     void Awake()
     {

@@ -63,7 +63,6 @@ public class GameController : MonoBehaviour
        }
     }
 
-
     public void UpdateScoreText()
     {
         myScoreText.text = "Score: " + score;
@@ -149,7 +148,7 @@ public class GameController : MonoBehaviour
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
 
         planets[] planets = GameObject.FindObjectsOfType<planets>();
-        int leftOverPlanetBonus = planets.Length * PlanetsBonusPoints;
+        int leftOverPlanetBonus = (planets.Length - 1) * PlanetsBonusPoints;
 
         int totalBonus = leftOverLaserBonus + leftOverPlanetBonus;
 
