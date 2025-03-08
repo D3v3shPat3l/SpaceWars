@@ -59,8 +59,14 @@ public class GameController : MonoBehaviour
        }
        if (planetCounter <= 1)
        {
-        SceneManager.LoadScene("GameOverScene");  
+        StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
        }
+    }
+
+     IEnumerator DelayedSceneChange(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void UpdateScoreText()
@@ -143,7 +149,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator EndOfRound()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
 
