@@ -146,12 +146,25 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         endOfRoundPanel.SetActive(true);
-        int leftOverLaserBonus = lasersLeft * LaserBonusPoints;
+        int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
 
         planets[] planets = GameObject.FindObjectsOfType<planets>();
         int leftOverPlanetBonus = planets.Length * PlanetsBonusPoints;
 
         int totalBonus = leftOverLaserBonus + leftOverPlanetBonus;
+
+        if (level >= 3 && level < 6)
+        {
+            totalBonus *= 2;
+        }
+        else if (level >= 6 && level < 9)
+        {
+            totalBonus *= 3;
+        }
+        else if (level >= 10)
+        {
+            totalBonus *= 5;
+        }
 
         LeftOverLaserBonusText.text = "Left over Laser Bonus: " + leftOverLaserBonus;
         LeftOverPlanetBonusText.text = "Left over Planet Bonus: " + leftOverPlanetBonus;
