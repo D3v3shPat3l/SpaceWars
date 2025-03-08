@@ -3059,7 +3059,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: score
-      value: 4900
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: nepLeft
