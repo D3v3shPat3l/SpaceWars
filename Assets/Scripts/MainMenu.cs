@@ -4,12 +4,13 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject leaderboardpanel;
     void Start()
     {
         AssignButton("Startbtn", PlayGame);
         AssignButton("Exitbtn", QuitGame);
-        AssignButton("Settingsbtn", OpenSettings);
-        AssignButton("Leaderbtn", OpenLeaderboard);
+        AssignButton("Settingsbtn", Settings);
+        AssignButton("Leaderbtn", Leaderboard);
     }
 
     void AssignButton(string buttonName, UnityEngine.Events.UnityAction action)
@@ -43,13 +44,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void OpenSettings()
+    public void Settings()
     {
-        SceneManager.LoadScene("SettingsScene");  
+        //SceneManager.LoadScene("SettingsScene");  
     }
 
-    public void OpenLeaderboard()
+    public void Leaderboard()
     {
-        SceneManager.LoadScene("LeaderboardScene");  
+        leaderboardpanel.SetActive(true); 
     }
 }

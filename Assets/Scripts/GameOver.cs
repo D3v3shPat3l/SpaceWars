@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameOver : MonoBehaviour
 {
+    [SerializeField] private GameObject leaderboardbtnpanel;
     void Start()
     {
         AssignButton("Menubtn", MenuBack);
+        AssignButton("Addhighscorebtn", HighScorePanel);
     }
 
     void AssignButton(string buttonName, UnityEngine.Events.UnityAction action)
@@ -33,5 +36,10 @@ public class GameOver : MonoBehaviour
     public void MenuBack()
     {
         SceneManager.LoadScene("MenuScene");  
+    }
+
+    public void HighScorePanel()
+    {
+        leaderboardbtnpanel.SetActive(true);
     }
 }

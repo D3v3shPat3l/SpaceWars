@@ -186,7 +186,7 @@ public class GameController : MonoBehaviour
         score += totalBonus;
         UpdateScoreText();
 
-        if (score >= 7000)
+        if (score >= 4000)
         {
         earthLeft.SetActive(false);
         earthMiddle.SetActive(false);
@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
         marsMiddle.SetActive(true);
         marsRight.SetActive(true);
         }
-        if (score >= 14000)
+        if (score >= 8000)
         {
         marsLeft.SetActive(false);
         marsMiddle.SetActive(false);
