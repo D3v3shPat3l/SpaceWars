@@ -3,8 +3,8 @@ guid: 0be49a868bb0b0447a331252fc1820c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3691398166445082858
-    second: GameOverbg_0
+      213: -5387944842470074560
+    second: GameOverBg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameOverbg_0
+      name: GameOverBg_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 617338cece485ccc0800000000000000
-      internalID: -3691398166445082858
+      spriteID: 0475c2b56bc2a35b0800000000000000
+      internalID: -5387944842470074560
       vertices: []
       indices: 
       edges: []
