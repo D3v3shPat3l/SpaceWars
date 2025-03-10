@@ -1,14 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
+using System;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject leaderboardpanel;
-    [SerializeField] private GameObject settingspanel;
+    [SerializeField] private GameObject leaderboardPanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private TextMeshProUGUI[] highScoreText;
+
     void Start()
     {
-    
+  
     }
 
     public void PlayGame()
@@ -16,18 +21,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("CountdownScene");  
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
      public void Settings()
     {
-        settingspanel.SetActive(true); 
+        settingsPanel.SetActive(true); 
     }
 
     public void Leaderboard()
     {
-        leaderboardpanel.SetActive(true); 
+        leaderboardPanel.SetActive(true); 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
