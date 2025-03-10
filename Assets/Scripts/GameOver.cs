@@ -15,9 +15,4 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");  
     }
-
-    public void HighScorePanel()
-    {
-        leaderboardbtnpanel.SetActive(true);
-    }
 }

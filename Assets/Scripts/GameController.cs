@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject nepMiddle;
     [SerializeField] private GameObject nepRight;
     [SerializeField] private TextMeshProUGUI inLauncherText;
-    
+
     void Start()
     {
         currentLasersLoaded = 10;
@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
        {
         StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
        }
-    }
+}
 
      IEnumerator DelayedSceneChange(string sceneName, float delay)
     {

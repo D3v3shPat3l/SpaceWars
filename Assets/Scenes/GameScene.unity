@@ -2161,7 +2161,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9124641664255279461}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: SavePressed
+        m_MethodName: OnSaveScoreButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4278,9 +4278,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1256340366}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: nameInputField
+      value: 
+      objectReference: {fileID: 2039370199}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: nameInputPanel
+      value: 
+      objectReference: {fileID: 1195254240}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: endOfRoundPanel
       value: 
       objectReference: {fileID: 1228456524}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: saveScoreButton
+      value: 
+      objectReference: {fileID: 1185913371}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: LaserBonusPoints
       value: 5
@@ -4300,6 +4312,10 @@ PrefabInstance:
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: enemyUFOSpeedMulti
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: leaderboardManager
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: planetMiddlePrefab
