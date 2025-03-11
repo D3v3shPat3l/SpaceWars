@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-   [SerializeField] GameObject laserPrefab;
-   [SerializeField] GameObject LaserGunPrefab;
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject LaserGunPrefab;
     [SerializeField] private Texture2D cursorTexture;
     private Vector2 cursorHotspot;
     private GameController myGameController;
