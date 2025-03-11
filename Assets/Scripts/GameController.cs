@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     EnemyUFOSpawner myEnemyUFOSpawner;
     PowerUpSpawner powerUpSpawner;
     PowerUp2Spawner powerUp2Spawner;
+    PowerUp3Spawner powerUp3Spawner;
     public int score = 0;
     public int level = 1;
     public float enemyUFOSpeed = 1f;
@@ -161,6 +162,11 @@ public class GameController : MonoBehaviour
         UpdateLasersText();
     }
 
+     public void ActivateScoreMultiplier()
+    {
+        score = (int)(score * 1.2);
+    }
+
     private void StartRound()
     {
         myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
@@ -177,6 +183,12 @@ public class GameController : MonoBehaviour
         if (powerUp2Spawner != null)
         {
             powerUp2Spawner.StartRound();
+        }
+
+        powerUp3Spawner = GameObject.FindObjectOfType<PowerUp3Spawner>();
+        if (powerUp3Spawner != null)
+        {
+            powerUp3Spawner.StartRound();
         }
     }
 
