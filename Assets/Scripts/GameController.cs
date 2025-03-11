@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     EnemyUFOSpawner myEnemyUFOSpawner;
+    PowerUpSpawner powerUpSpawner;
     public int score = 0;
     public int level = 1;
     public float enemyUFOSpeed = 1f;
@@ -148,16 +149,27 @@ public class GameController : MonoBehaviour
         UpdateInLauncherText();
     }
 
+    public void ExtraEnemies()
+    {
+        myEnemyUFOSpawner.ufoToSpawnThisRound += 3;  
+    }
+
     private void StartRound()
     {
         myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
         enemyUFOLeftInRound = enemyUFOThisRound;
         myEnemyUFOSpawner.StartRound();
+
+        powerUpSpawner = GameObject.FindObjectOfType<PowerUpSpawner>();
+        if (powerUpSpawner != null)
+        {
+            powerUpSpawner.StartRound();
+        }
     }
 
     public IEnumerator EndOfRound()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
 
