@@ -8,6 +8,7 @@ TagManager:
   - Explosions
   - Planets
   - Laser
+  - Powerups
   layers:
   - Default
   - TransparentFX

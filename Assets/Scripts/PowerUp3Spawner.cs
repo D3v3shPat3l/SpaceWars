@@ -8,7 +8,8 @@ public class PowerUp3Spawner : MonoBehaviour
 
     private float minX, maxX;
     private GameController myGameController;
-    
+    public int powerUpToSpawnThisRound = 1;
+
     void Awake()
     {
         myGameController = GameObject.FindObjectOfType<GameController>();
@@ -23,14 +24,19 @@ public class PowerUp3Spawner : MonoBehaviour
 
     public void StartRound()
     {
+        powerUpToSpawnThisRound = 1;
         StartCoroutine(SpawnPowerUp());
     }
 
     private IEnumerator SpawnPowerUp()
     {
-        float randomX = Random.Range(minX, maxX);
-        Instantiate(powerUpPrefab, new Vector3(randomX, Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y + yPadding, 0), Quaternion.identity);
-
-        yield return new WaitForSeconds(10f); 
+        while (powerUpToSpawnThisRound > 0)
+        {
+            float delayBeforeSpawn = Random.Range(0f, 10f); 
+            yield return new WaitForSeconds(delayBeforeSpawn);
+            float randomX = Random.Range(minX, maxX);
+            Instantiate(powerUpPrefab, new Vector3(randomX, Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y + yPadding, 0), Quaternion.identity);
+            powerUpToSpawnThisRound--;
+        }
     }
 }

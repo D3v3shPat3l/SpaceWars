@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
-     private int destroyUFOPoints = 25;
+    private int destroyUFOPoints = 25;
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
     [SerializeField] private int LaserBonusPoints = 5;
