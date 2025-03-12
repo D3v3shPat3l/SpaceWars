@@ -7,8 +7,7 @@ public class Music : MonoBehaviour{
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-        else{
+        } else{
             Destroy(gameObject);
         }
     }

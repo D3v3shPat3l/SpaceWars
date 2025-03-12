@@ -49,8 +49,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject highScorePanel;
     [SerializeField] private TMP_InputField userName;
 
-    void Start()
-    {
+    void Start(){
         currentLasersLoaded = 10;
         lasersLeft -= 10;
 
@@ -65,77 +64,68 @@ public class GameController : MonoBehaviour
         StartRound();
     }
 
-    void Update()
-    {
-       if (enemyUFOLeftInRound <=0 && !isRoundOver)
-       {
+    void Update(){
+       if (enemyUFOLeftInRound <=0 && !isRoundOver){
         isRoundOver = true;
         StartCoroutine(EndOfRound());
        }
        if (planetCounter <= 1){
             if (myScoreManager.IsThisHighScore(score)){
                 highScorePanel.SetActive(true);
-            }
-            else {
+            } else{
                 StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
             }
         }
     }
 
-     IEnumerator DelayedSceneChange(string sceneName, float delay)
-    {
+    public void SaveScore(){
+        if (!string.IsNullOrEmpty(userName.text)){
+            myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
+        }
+        StartCoroutine(DelayedSceneChange("MainScene", 2f));
+    }
+
+     IEnumerator DelayedSceneChange(string sceneName, float delay){
         yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(sceneName);
     }
 
-    public void UpdateScoreText()
-    {
+    public void UpdateScoreText(){
         myScoreText.text = "Score: " + score;
     }
 
-    public void UpdateLevelText()
-    {
+    public void UpdateLevelText(){
         myLevelText.text = "Level: " + level; 
     }
 
-    public void UpdateLasersText()
-    {
+    public void UpdateLasersText(){
         myLaserText.text = "Lasers: " + lasersLeft;
         UpdateInLauncherText();
     }
 
-    public void UpdateInLauncherText()
-    {
+    public void UpdateInLauncherText(){
         inLauncherText.text = "In Launcher: " + currentLasersLoaded;
     }
 
-    public void AddUFOPoints()
-    {
+    public void AddUFOPoints(){
         score += destroyUFOPoints;
         EnemyUFODestroyed();
         UpdateScoreText();
     }
 
-    public void EnemyUFODestroyed()
-    {
+    public void EnemyUFODestroyed(){
         enemyUFOLeftInRound--;
     }
 
-    public void FiredLaser()
-    {
-        if (currentLasersLoaded > 0)
-        {
+    public void FiredLaser(){
+        if (currentLasersLoaded > 0){
             currentLasersLoaded--;
         }
-        if (currentLasersLoaded == 0)
-        {
-            if (lasersLeft >= 10)
-            {
+        if (currentLasersLoaded == 0){
+            if (lasersLeft >= 10){
             currentLasersLoaded = 10;
             lasersLeft -= 10;
-            }
-            else
-            {
+            } else{
             currentLasersLoaded = lasersLeft;
             lasersLeft = 0;
             }
@@ -143,15 +133,11 @@ public class GameController : MonoBehaviour
         UpdateLasersText();
     }
 
-    public void LaserLauncherHit()
-    {
-        if (lasersLeft >= 10)
-        {
+    public void LaserLauncherHit(){
+        if (lasersLeft >= 10){
             currentLasersLoaded = 10;
             lasersLeft -= 10;
-        }
-        else
-        {
+        } else{
             currentLasersLoaded = lasersLeft;
             lasersLeft = 0;
         }
@@ -159,24 +145,20 @@ public class GameController : MonoBehaviour
         UpdateInLauncherText();
     }
 
-    public void ExtraEnemies()
-    {
+    public void ExtraEnemies(){
         myEnemyUFOSpawner.ufoToSpawnThisRound += 3;  
     }
 
-    public void AddLaserShots()
-    {
+    public void AddLaserShots(){
         lasersLeft += 5; 
         UpdateLasersText();
     }
 
-     public void ActivateScoreMultiplier()
-    {
+     public void ActivateScoreMultiplier(){
         score = (int)(score * 1.2);
     }
 
-    private void StartRound()
-    {
+    private void StartRound(){
         myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
         enemyUFOLeftInRound = enemyUFOThisRound;
         myEnemyUFOSpawner.StartRound();
@@ -194,33 +176,26 @@ public class GameController : MonoBehaviour
         }
 
         powerUp3Spawner = GameObject.FindObjectOfType<PowerUp3Spawner>();
-        if (powerUp3Spawner != null)
-        {
+        if (powerUp3Spawner != null){
             powerUp3Spawner.StartRound();
         }
     }
 
-    public IEnumerator EndOfRound()
-    {
+    public IEnumerator EndOfRound(){
         yield return new WaitForSeconds(5f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
-
         planets[] planets = GameObject.FindObjectsOfType<planets>();
         int leftOverPlanetBonus = (planets.Length - 1) * PlanetsBonusPoints;
-
         int totalBonus = leftOverLaserBonus + leftOverPlanetBonus;
 
-        if (level >= 3 && level < 6)
-        {
+        if (level >= 3 && level < 6){
             totalBonus *= 2;
         }
-        else if (level >= 6 && level < 9)
-        {
+        else if (level >= 6 && level < 9){
             totalBonus *= 3;
         }
-        else if (level >= 10)
-        {
+        else if (level >= 10){
             totalBonus *= 5;
         }
 
@@ -230,8 +205,7 @@ public class GameController : MonoBehaviour
         score += totalBonus;
         UpdateScoreText();
 
-        if (score >= 8000)
-        {
+        if (score >= 8000){
         earthLeft.SetActive(false);
         earthMiddle.SetActive(false);
         earthRight.SetActive(false);
@@ -239,8 +213,7 @@ public class GameController : MonoBehaviour
         marsMiddle.SetActive(true);
         marsRight.SetActive(true);
         }
-        if (score >= 16000)
-        {
+        if (score >= 16000){
         marsLeft.SetActive(false);
         marsMiddle.SetActive(false);
         marsRight.SetActive(false);
@@ -267,14 +240,5 @@ public class GameController : MonoBehaviour
         level++;
         UpdateLevelText();
         UpdateLasersText();
-    }
-
-    public void SaveScore()
-    {
-        if (!string.IsNullOrEmpty(userName.text))
-        {
-            myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
-        }
-        SceneManager.LoadScene("MenuScene");
     }
 }

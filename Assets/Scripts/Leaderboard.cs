@@ -20,7 +20,7 @@ public class Leaderboard : MonoBehaviour{
         if (highScoreEntryList == null || highScoreEntryList.Count == 0){
             for (int i = 0; i < nameTextArray.Length; i++){
                 nameTextArray[i].text = "---";
-                scoreTextArray[i].text = "0";
+                scoreTextArray[i].text = "---";
             }
             return;
         }
@@ -28,8 +28,7 @@ public class Leaderboard : MonoBehaviour{
             if (i < highScoreEntryList.Count){
                 nameTextArray[i].text = highScoreEntryList[i].userName;
                 scoreTextArray[i].text = highScoreEntryList[i].score.ToString();
-            }
-            else{
+            } else{
             
                 nameTextArray[i].text = "---";
                 scoreTextArray[i].text = "---";

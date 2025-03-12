@@ -21,9 +21,6 @@ public class EnemyUFOSpawner : MonoBehaviour{
         yValue = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
-    void Update(){
-    }
-
     public void StartRound(){
         StartCoroutine(SpawnUFO());
     }
