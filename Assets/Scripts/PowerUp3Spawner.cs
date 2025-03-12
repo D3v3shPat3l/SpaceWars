@@ -1,37 +1,29 @@
 using System.Collections;
 using UnityEngine;
 
-public class PowerUp3Spawner : MonoBehaviour
-{
+public class PowerUp3Spawner : MonoBehaviour{
     [SerializeField] private GameObject powerUpPrefab;
     [SerializeField] private float yPadding = 0.5f;
-
     private float minX, maxX;
     private GameController myGameController;
     public int powerUpToSpawnThisRound = 1;
 
-    void Awake()
-    {
+    void Awake(){
         myGameController = GameObject.FindObjectOfType<GameController>();
         minX = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).x;
         maxX = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0)).x;
     }
 
-    void Update()
-    {
-
+    void Update(){
     }
 
-    public void StartRound()
-    {
+    public void StartRound(){
         powerUpToSpawnThisRound = 1;
         StartCoroutine(SpawnPowerUp());
     }
 
-    private IEnumerator SpawnPowerUp()
-    {
-        while (powerUpToSpawnThisRound > 0)
-        {
+    private IEnumerator SpawnPowerUp(){
+        while (powerUpToSpawnThisRound > 0){
             float delayBeforeSpawn = Random.Range(0f, 10f); 
             yield return new WaitForSeconds(delayBeforeSpawn);
             float randomX = Random.Range(minX, maxX);

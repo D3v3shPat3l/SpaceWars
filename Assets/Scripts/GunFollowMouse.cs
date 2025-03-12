@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class GunFollowMouse : MonoBehaviour
-{
+public class GunFollowMouse : MonoBehaviour{
     public Transform gun; 
     public Transform pivotPoint; 
     public float minRotation = 0f; 
     public float maxRotation = 90f; 
     public float rotationSpeed = 40f;
 
-    void Update()
-    {
+    void Update(){
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
 

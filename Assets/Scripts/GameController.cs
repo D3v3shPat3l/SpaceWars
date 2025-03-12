@@ -219,7 +219,6 @@ public class GameController : MonoBehaviour
         LeftOverLaserBonusText.text = "Left over Laser Bonus: " + leftOverLaserBonus;
         LeftOverPlanetBonusText.text = "Left over Planet Bonus: " + leftOverPlanetBonus;
         TotalBonusText.text = "Total Bonus: " + totalBonus;
-
         score += totalBonus;
         UpdateScoreText();
 

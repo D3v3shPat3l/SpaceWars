@@ -1,38 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
-using System;
 
-public class MainMenu : MonoBehaviour
-{
-    [SerializeField] private GameObject leaderboardPanel;
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private TextMeshProUGUI[] highScoreText;
+public class MainMenu : MonoBehaviour{
 
-    void Start()
-    {
-
+    void Start(){
     }
 
-    public void PlayGame()
-    {
+    public void PlayGame(){
         SceneManager.LoadScene("CountdownScene");  
     }
 
-     public void Settings()
-    {
-        settingsPanel.SetActive(true); 
+     public void Settings(){
+        SceneManager.LoadScene("SettingScene"); 
     }
 
-    public void Leaderboard()
-    {
-        leaderboardPanel.SetActive(true); 
+    public void Leaderboard(){
+        SceneManager.LoadScene("LeaderboardScene"); 
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame(){
         Application.Quit();
     }
 }

@@ -1,16 +1,12 @@
 using UnityEngine;
 
-public class selfDestruct : MonoBehaviour
-{
+public class selfDestruct : MonoBehaviour{
 
     [SerializeField] private float destroyTime = 1f;
-    void Start()
-    {
+    void Start(){
         Destroy(gameObject, destroyTime);
     }
 
-    void Update()
-    {
-        
+    void Update(){
     }
 }

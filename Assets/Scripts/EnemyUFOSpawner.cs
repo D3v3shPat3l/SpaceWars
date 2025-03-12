@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyUFOSpawner : MonoBehaviour
-{
+public class EnemyUFOSpawner : MonoBehaviour{
     [SerializeField] private GameObject ufoPrefab;
     [SerializeField] private float yPadding = 0.5f;
 
@@ -14,8 +13,7 @@ public class EnemyUFOSpawner : MonoBehaviour
 
     float yValue;
 
-    void Awake()
-    {
+    void Awake(){
         minX = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).x;
         maxX = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0)).x;
 
@@ -23,25 +21,19 @@ public class EnemyUFOSpawner : MonoBehaviour
         yValue = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y;
     }
 
-    void Update()
-    {
-
+    void Update(){
     }
 
-    public void StartRound()
-    {
+    public void StartRound(){
         StartCoroutine(SpawnUFO());
     }
 
-    public IEnumerator SpawnUFO()
-    {
-        while (ufoToSpawnThisRound > 0)
-        {   
+    public IEnumerator SpawnUFO(){
+        while (ufoToSpawnThisRound > 0){   
             float randomX = Random.Range(minX, maxX);
             Instantiate(ufoPrefab, new Vector3(randomX, yValue, 0), Quaternion.identity);
             ufoToSpawnThisRound--;
             yield return new WaitForSeconds(delayBetweenUFO);
         }
     }
-
 }
