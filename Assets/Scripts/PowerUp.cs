@@ -8,7 +8,7 @@ public class PowerUp : MonoBehaviour{
     private GameObject[] defenders;
 
     void Start(){
-        myGameController = GameObject.FindObjectOfType<GameController>();
+        myGameController = GameObject.FindFirstObjectByType<GameController>(); 
         defenders = GameObject.FindGameObjectsWithTag("Defenders");
         if (defenders.Length > 0){
             target = defenders[Random.Range(0, defenders.Length)].transform.position;

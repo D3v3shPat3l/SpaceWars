@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyUFOSpawner : MonoBehaviour{
     [SerializeField] private GameObject ufoPrefab;
-    [SerializeField] private float yPadding = 0.5f;
 
     private float minX, maxX;
 

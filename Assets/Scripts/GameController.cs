@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         lasersLeft -= 10;
 
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
-        planetCounter = GameObject.FindObjectsOfType<planets>().Length;
+        planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
         myScoreManager = ScoreManager.Instance;
 
         UpdateScoreText();
@@ -163,19 +163,19 @@ public class GameController : MonoBehaviour
         enemyUFOLeftInRound = enemyUFOThisRound;
         myEnemyUFOSpawner.StartRound();
 
-        powerUpSpawner = GameObject.FindObjectOfType<PowerUpSpawner>();
+        powerUpSpawner = GameObject.FindAnyObjectByType<PowerUpSpawner>(); 
         if (powerUpSpawner != null)
         {
             powerUpSpawner.StartRound();
         }
 
-        powerUp2Spawner = GameObject.FindObjectOfType<PowerUp2Spawner>();
+        powerUp2Spawner = GameObject.FindAnyObjectByType<PowerUp2Spawner>(); 
         if (powerUp2Spawner != null)
         {
             powerUp2Spawner.StartRound();
         }
 
-        powerUp3Spawner = GameObject.FindObjectOfType<PowerUp3Spawner>();
+        powerUp3Spawner = GameObject.FindAnyObjectByType<PowerUp3Spawner>(); 
         if (powerUp3Spawner != null){
             powerUp3Spawner.StartRound();
         }
@@ -185,7 +185,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
-        planets[] planets = GameObject.FindObjectsOfType<planets>();
+        planets[] planets = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None);
         int leftOverPlanetBonus = (planets.Length - 1) * PlanetsBonusPoints;
         int totalBonus = leftOverLaserBonus + leftOverPlanetBonus;
 

@@ -8,7 +8,7 @@ public class EnemyUFO : MonoBehaviour{
     Vector3 target;
 
     void Start(){
-        myGameController = GameObject.FindObjectOfType<GameController>();
+        myGameController = GameObject.FindFirstObjectByType<GameController>(); 
         defenders = GameObject.FindGameObjectsWithTag("Defenders");
         target = defenders[Random.Range(0,defenders.Length)].transform.position;
         speed = myGameController.enemyUFOSpeed;
