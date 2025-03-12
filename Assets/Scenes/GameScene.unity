@@ -2164,7 +2164,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9124641664255279461}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: OnSaveScoreButtonClick
+        m_MethodName: SaveScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2225,7 +2225,7 @@ GameObject:
   - component: {fileID: 1195254242}
   - component: {fileID: 1195254244}
   m_Layer: 5
-  m_Name: NewHighScorePanel
+  m_Name: HighScorePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4555,6 +4555,10 @@ PrefabInstance:
       propertyPath: nepRight
       value: 
       objectReference: {fileID: 5273891505291391807}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: userName
+      value: 
+      objectReference: {fileID: 2039370199}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: earthLeft
       value: 

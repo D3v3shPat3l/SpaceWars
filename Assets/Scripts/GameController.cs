@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     private int destroyUFOPoints = 25;
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
+    private ScoreManager myScoreManager;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
@@ -45,6 +46,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject nepMiddle;
     [SerializeField] private GameObject nepRight;
     [SerializeField] private TextMeshProUGUI inLauncherText;
+    [SerializeField] private GameObject highScorePanel;
+    [SerializeField] private TMP_InputField userName;
 
     void Start()
     {
@@ -53,6 +56,7 @@ public class GameController : MonoBehaviour
 
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
         planetCounter = GameObject.FindObjectsOfType<planets>().Length;
+        myScoreManager = ScoreManager.Instance;
 
         UpdateScoreText();
         UpdateLevelText();
@@ -68,11 +72,15 @@ public class GameController : MonoBehaviour
         isRoundOver = true;
         StartCoroutine(EndOfRound());
        }
-       if (planetCounter <= 1)
-       {
-        StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
-       }
-}
+       if (planetCounter <= 1){
+            if (myScoreManager.IsThisHighScore(score)){
+                highScorePanel.SetActive(true);
+            }
+            else {
+                StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
+            }
+        }
+    }
 
      IEnumerator DelayedSceneChange(string sceneName, float delay)
     {
@@ -259,5 +267,14 @@ public class GameController : MonoBehaviour
         level++;
         UpdateLevelText();
         UpdateLasersText();
+    }
+
+    public void SaveScore()
+    {
+        if (!string.IsNullOrEmpty(userName.text))
+        {
+            myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
+        }
+        SceneManager.LoadScene("MenuScene");
     }
 }

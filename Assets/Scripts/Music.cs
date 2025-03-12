@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class Music : MonoBehaviour{
-    private static Music instance;
+    public static Music instance;
 
-    void Awake(){
+    private void Awake(){
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(gameObject);
