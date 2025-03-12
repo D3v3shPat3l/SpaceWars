@@ -4576,6 +4576,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 568905867}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: saveButton
+      value: 
+      objectReference: {fileID: 1185913371}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: earthMiddle
       value: 
       objectReference: {fileID: 1002958722}
@@ -4627,6 +4631,10 @@ PrefabInstance:
       propertyPath: endOfRoundPanel
       value: 
       objectReference: {fileID: 1228456524}
+    - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
+      propertyPath: playerNameInput
+      value: 
+      objectReference: {fileID: 2039370199}
     - target: {fileID: 1016363603409550351, guid: 58daba9b336ef8a40a0f28b01da6421b, type: 3}
       propertyPath: saveScoreButton
       value: 

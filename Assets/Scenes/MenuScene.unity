@@ -400,7 +400,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 366c9fb5803a5044f99ee13f325b5036, type: 3}
@@ -1090,14 +1090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230ec1f9b99ffa84680e8f967e7adc35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardPanel: {fileID: 0}
-  settingsPanel: {fileID: 0}
-  highScoreText:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1375725593
 GameObject:
   m_ObjectHideFlags: 0
