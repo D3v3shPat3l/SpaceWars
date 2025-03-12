@@ -82,7 +82,7 @@ public class GameController : MonoBehaviour
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        StartCoroutine(DelayedSceneChange("MainScene", 2f));
+        StartCoroutine(DelayedSceneChange("MenuScene", 2f));
     }
 
      IEnumerator DelayedSceneChange(string sceneName, float delay){
