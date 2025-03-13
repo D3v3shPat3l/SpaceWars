@@ -9,6 +9,7 @@ TagManager:
   - Planets
   - Laser
   - Powerups
+  - SoundEffects
   layers:
   - Default
   - TransparentFX
