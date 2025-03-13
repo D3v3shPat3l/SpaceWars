@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour{
     [SerializeField] private GameObject leaderboardPanel;
+    [SerializeField] private GameObject settingPanel;
 
     void Start(){
     }
@@ -12,7 +13,7 @@ public class MainMenu : MonoBehaviour{
     }
 
      public void Settings(){
-        SceneManager.LoadScene("SettingScene"); 
+        settingPanel.SetActive(true);
     }
 
     public void Leaderboard(){
