@@ -367,6 +367,8 @@ MonoBehaviour:
   - {fileID: 1410018826}
   - {fileID: 1205289651}
   - {fileID: 543823758}
+  rankUpSound: {fileID: 4323552764516311096, guid: 93f168ccf1b47de429146dc4bf757cee, type: 3}
+  rankUpParticles: {fileID: 0}
 --- !u!1 &251000595
 GameObject:
   m_ObjectHideFlags: 0
