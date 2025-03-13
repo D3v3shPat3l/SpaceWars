@@ -4,8 +4,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
-{
+public class GameController : MonoBehaviour{
     EnemyUFOSpawner myEnemyUFOSpawner;
     PowerUpSpawner powerUpSpawner;
     PowerUp2Spawner powerUp2Spawner;
