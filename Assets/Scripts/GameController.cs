@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour{
-    EnemyUFOSpawner myEnemyUFOSpawner;
-    PowerUpSpawner powerUpSpawner;
-    PowerUp2Spawner powerUp2Spawner;
-    PowerUp3Spawner powerUp3Spawner;
+    private EnemyUFOSpawner myEnemyUFOSpawner;
+    private PowerUpSpawner powerUpSpawner;
+    private PowerUp2Spawner powerUp2Spawner;
+    private PowerUp3Spawner powerUp3Spawner;
+    private ScoreManager myScoreManager;
+    private int enemyUFOThisRound = 10;
+    private int enemyUFOLeftInRound = 0;
+    private bool isRoundOver = false;
+    private int destroyUFOPoints = 25;
     public int score = 0;
     public int level = 1;
     public float enemyUFOSpeed = 1f;
     public int lasersLeft = 30;
     public bool isGameOver = false;
-    private int enemyUFOThisRound = 10;
-    private int enemyUFOLeftInRound = 0;
-    private bool isRoundOver = false;
-    private int destroyUFOPoints = 25;
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
-    private ScoreManager myScoreManager;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
@@ -48,10 +48,18 @@ public class GameController : MonoBehaviour{
     void Start(){
         currentLasersLoaded = 10;
         lasersLeft -= 10;
+        planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
 
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
-        planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
+        ServiceLocator.Register<EnemyUFOSpawner>(myEnemyUFOSpawner);
         myScoreManager = ScoreManager.Instance;
+        ServiceLocator.Register<ScoreManager>(myScoreManager);
+        powerUpSpawner = GameObject.FindAnyObjectByType<PowerUpSpawner>();
+        if (powerUpSpawner != null) ServiceLocator.Register<PowerUpSpawner>(powerUpSpawner);
+        powerUp2Spawner = GameObject.FindAnyObjectByType<PowerUp2Spawner>();
+        if (powerUp2Spawner != null) ServiceLocator.Register<PowerUp2Spawner>(powerUp2Spawner);
+        powerUp3Spawner = GameObject.FindAnyObjectByType<PowerUp3Spawner>();
+        if (powerUp3Spawner != null) ServiceLocator.Register<PowerUp3Spawner>(powerUp3Spawner);
 
         UpdateScoreText();
         UpdateLevelText();
@@ -157,23 +165,9 @@ public class GameController : MonoBehaviour{
         myEnemyUFOSpawner.ufoToSpawnThisRound = enemyUFOThisRound;
         enemyUFOLeftInRound = enemyUFOThisRound;
         myEnemyUFOSpawner.StartRound();
-
-        powerUpSpawner = GameObject.FindAnyObjectByType<PowerUpSpawner>(); 
-        if (powerUpSpawner != null)
-        {
-            powerUpSpawner.StartRound();
-        }
-
-        powerUp2Spawner = GameObject.FindAnyObjectByType<PowerUp2Spawner>(); 
-        if (powerUp2Spawner != null)
-        {
-            powerUp2Spawner.StartRound();
-        }
-
-        powerUp3Spawner = GameObject.FindAnyObjectByType<PowerUp3Spawner>(); 
-        if (powerUp3Spawner != null){
-            powerUp3Spawner.StartRound();
-        }
+        powerUpSpawner?.StartRound();
+        powerUp2Spawner?.StartRound();
+        powerUp3Spawner?.StartRound();
     }
 
     public IEnumerator EndOfRound(){
