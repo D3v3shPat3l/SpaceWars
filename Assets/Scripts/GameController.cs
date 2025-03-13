@@ -1,10 +1,6 @@
 using UnityEngine;
 using TMPro;
-using System;
 using System.Collections;
-using UnityEngine.TestTools;
-using NUnit.Framework.Constraints;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,6 +14,7 @@ public class GameController : MonoBehaviour
     public int level = 1;
     public float enemyUFOSpeed = 1f;
     public int lasersLeft = 30;
+    public bool isGameOver = false;
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
     private bool isRoundOver = false;
@@ -25,7 +22,6 @@ public class GameController : MonoBehaviour
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
     private ScoreManager myScoreManager;
-    public bool isGameOver = false;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
