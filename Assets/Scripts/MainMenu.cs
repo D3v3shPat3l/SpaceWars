@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour{
+    [SerializeField] private GameObject leaderboardPanel;
 
     void Start(){
     }
@@ -15,7 +16,7 @@ public class MainMenu : MonoBehaviour{
     }
 
     public void Leaderboard(){
-        SceneManager.LoadScene("LeaderboardScene"); 
+        leaderboardPanel.SetActive(true);
     }
 
     public void QuitGame(){

@@ -11,16 +11,12 @@ public class Leaderboard : MonoBehaviour{
         ShowHighScores();
     }
 
-    public void Back(){
-        SceneManager.LoadScene("MenuScene");
-    }
-
     public void ShowHighScores(){
         List<HighScoreEntry> highScoreEntryList = SaveScoreManager.LoadScores();
         if (highScoreEntryList == null || highScoreEntryList.Count == 0){
             for (int i = 0; i < nameTextArray.Length; i++){
                 nameTextArray[i].text = "---";
-                scoreTextArray[i].text = "---";
+                scoreTextArray[i].text = "0";
             }
             return;
         }
@@ -31,7 +27,7 @@ public class Leaderboard : MonoBehaviour{
             } else{
             
                 nameTextArray[i].text = "---";
-                scoreTextArray[i].text = "---";
+                scoreTextArray[i].text = "0";
             }
         }
     }
