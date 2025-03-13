@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour{
             if (myScoreManager.IsThisHighScore(score)){
                 highScorePanel.SetActive(true);
             } else{
-                SceneManager.LoadScene("GameOverScene");
+                StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
             }
         }
         if (enemyUFOLeftInRound <=0 && !isRoundOver && !isGameOver){
@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour{
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        SceneManager.LoadScene("GameOverScene");
+        StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
     }
 
     public void UpdateScoreText(){
@@ -171,6 +171,7 @@ public class GameController : MonoBehaviour{
     }
 
     public IEnumerator EndOfRound(){
+        yield return new WaitForSeconds(3f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
         planets[] planets = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None);
@@ -228,5 +229,9 @@ public class GameController : MonoBehaviour{
         level++;
         UpdateLevelText();
         UpdateLasersText();
+    }
+    IEnumerator DelayedSceneChange(string sceneName, float delay){
+         yield return new WaitForSeconds(delay);
+         SceneManager.LoadScene(sceneName);
     }
 }
