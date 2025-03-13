@@ -21,7 +21,7 @@ public class PowerUpSpawner : MonoBehaviour{
 
     private IEnumerator SpawnPowerUp(){
         while (powerUpToSpawnThisRound > 0){
-            float delayBeforeSpawn = Random.Range(0f, 5f); 
+            float delayBeforeSpawn = Random.Range(0f, 6f); 
             yield return new WaitForSeconds(delayBeforeSpawn);
             float randomX = Random.Range(minX, maxX);
             Instantiate(powerUpPrefab, new Vector3(randomX, Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 0)).y + yPadding, 0), Quaternion.identity);

@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour{
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("GameOverScene");
     }
 
     public void UpdateScoreText(){
