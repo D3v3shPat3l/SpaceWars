@@ -4,11 +4,13 @@ using UnityEngine.UI;
 public class Setting : MonoBehaviour{
     [SerializeField] private Toggle musicToggle;
     [SerializeField] private Toggle soundEffectsToggle;
-    [SerializeField] private AudioSource[] soundEffectAudioSources; 
+    [SerializeField] private AudioSource[] soundEffectAudioSources;
 
     void Start(){
         if (musicToggle != null){
-            musicToggle.isOn = !Music.instance.GetComponent<AudioSource>().mute;
+            bool musicOn = PlayerPrefs.GetInt("Music", 1) == 1; 
+            musicToggle.isOn = musicOn;
+            Music.instance.GetComponent<AudioSource>().mute = !musicOn; 
             musicToggle.onValueChanged.AddListener(ToggleMusic);
         }
 
@@ -26,7 +28,9 @@ public class Setting : MonoBehaviour{
     }
 
     public void ToggleMusic(bool isOn){
-        Music.instance.ToggleMusic(isOn);
+        PlayerPrefs.SetInt("Music", isOn ? 1 : 0); 
+        PlayerPrefs.Save();
+        Music.instance.GetComponent<AudioSource>().mute = !isOn; 
     }
 
     public void ToggleSoundEffects(bool isOn){
@@ -34,7 +38,7 @@ public class Setting : MonoBehaviour{
         PlayerPrefs.Save();
         foreach (AudioSource audioSource in soundEffectAudioSources){
             if (audioSource != null){
-                audioSource.mute = !isOn; 
+                audioSource.mute = !isOn;
             }
         }
     }

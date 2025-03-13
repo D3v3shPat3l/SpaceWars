@@ -6,15 +6,12 @@ using System.Collections;
 public class Leaderboard : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI[] nameTextArray;
     [SerializeField] private TextMeshProUGUI[] scoreTextArray;
-    [SerializeField] private AudioClip newEntrySound;
-    private AudioSource audioSource;
+    [SerializeField] private GameObject soundEffectPrefab; 
 
     private Color goldColor = new Color(1f, 0.843f, 0f);
     private Color greenColor = new Color(0.494f, 0.850f, 0.341f);
 
     void Start() {
-        audioSource = GetComponent<AudioSource>();
-        audioSource.playOnAwake = false;
         ShowHighScores();
     }
 
@@ -25,10 +22,7 @@ public class Leaderboard : MonoBehaviour {
         int flashIndex = -1;  
 
         string lastLeaderboard = PlayerPrefs.GetString("LastLeaderboard", "");
-
         string currentLeaderboard = "";
-        List<string> currentNames = new List<string>();
-        List<int> currentScores = new List<int>();
 
         if (highScoreEntryList == null || highScoreEntryList.Count == 0) {
             for (int i = 0; i < nameTextArray.Length; i++) {
@@ -43,8 +37,6 @@ public class Leaderboard : MonoBehaviour {
                 nameTextArray[i].text = highScoreEntryList[i].userName;
                 scoreTextArray[i].text = highScoreEntryList[i].score.ToString();
                 currentLeaderboard += highScoreEntryList[i].userName + ":" + highScoreEntryList[i].score + ",";
-                currentNames.Add(highScoreEntryList[i].userName);
-                currentScores.Add(highScoreEntryList[i].score);
 
                 if (!string.IsNullOrEmpty(lastLeaderboard)) {
                     string[] lastEntries = lastLeaderboard.Split(',');
@@ -79,10 +71,21 @@ public class Leaderboard : MonoBehaviour {
         PlayerPrefs.SetString("LastLeaderboard", currentLeaderboard);
         PlayerPrefs.Save();
 
-        if ((newEntryAdded || scoreUpdated) && newEntrySound != null) {
-            audioSource.PlayOneShot(newEntrySound);
+        if (newEntryAdded || scoreUpdated) {
+            PlaySoundEffect();
             if (flashIndex != -1) {
                 StartCoroutine(FlashHighScoreText(flashIndex));
+            }
+        }
+    }
+
+    private void PlaySoundEffect() {
+        if (soundEffectPrefab != null && PlayerPrefs.GetInt("SoundEffectsEnabled", 1) == 1) {
+            GameObject soundInstance = Instantiate(soundEffectPrefab);
+            AudioSource audioSource = soundInstance.GetComponent<AudioSource>();
+            if (audioSource != null) {
+                audioSource.Play();
+                Destroy(soundInstance, audioSource.clip.length);
             }
         }
     }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4836496432775973616}
   - component: {fileID: 4323552764516311096}
   m_Layer: 0
-  m_Name: RankUp
+  m_Name: LeaderboardSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e1b7c06904139546958766a90e1198b, type: 3}
   m_Resource: {fileID: 8300000, guid: 4e1b7c06904139546958766a90e1198b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
