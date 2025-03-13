@@ -14,7 +14,7 @@ public class CursorController : MonoBehaviour{
     }
 
     void Update(){
-        if (Input.GetMouseButtonDown(0) && myGameController.currentLasersLoaded>0){
+        if (Input.GetMouseButtonDown(0) && myGameController.currentLasersLoaded > 0 && !myGameController.isGameOver){
             Instantiate(laserPrefab, LaserGunPrefab.transform.position, Quaternion.identity);
             myGameController.FiredLaser();
         }

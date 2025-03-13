@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     public int currentLasersLoaded = 0;
     public int planetCounter = 0;
     private ScoreManager myScoreManager;
+    public bool isGameOver = false;
     [SerializeField] private int LaserBonusPoints = 5;
     [SerializeField] private int PlanetsBonusPoints = 100;
     [SerializeField] private float enemyUFOSpeedMulti = 2f;
@@ -35,6 +36,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI LeftOverPlanetBonusText;
     [SerializeField] private TextMeshProUGUI TotalBonusText;
     [SerializeField] private TextMeshProUGUI CountdownText;
+    [SerializeField] private TextMeshProUGUI inLauncherText;
+    [SerializeField] private TMP_InputField userName;
     [SerializeField] private GameObject endOfRoundPanel;
     [SerializeField] private GameObject earthLeft;
     [SerializeField] private GameObject earthMiddle;
@@ -45,10 +48,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject nepLeft;
     [SerializeField] private GameObject nepMiddle;
     [SerializeField] private GameObject nepRight;
-    [SerializeField] private TextMeshProUGUI inLauncherText;
     [SerializeField] private GameObject highScorePanel;
-    [SerializeField] private TMP_InputField userName;
-
+   
     void Start(){
         currentLasersLoaded = 10;
         lasersLeft -= 10;
@@ -65,29 +66,28 @@ public class GameController : MonoBehaviour
     }
 
     void Update(){
-       if (enemyUFOLeftInRound <=0 && !isRoundOver){
-        isRoundOver = true;
-        StartCoroutine(EndOfRound());
-       }
-       if (planetCounter <= 1){
+        if (planetCounter <= 1){
+            isGameOver = true;
             if (myScoreManager.IsThisHighScore(score)){
                 highScorePanel.SetActive(true);
             } else{
-                StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
+                SceneManager.LoadScene("GameOverScene");
             }
         }
+        if (enemyUFOLeftInRound <=0 && !isRoundOver && !isGameOver){
+            EnemyUFO[] m = GameObject.FindObjectsByType<EnemyUFO>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+            if (m.Length == 0){
+                isRoundOver = true;
+                StartCoroutine(EndOfRound());
+            }
+       }
     }
 
     public void SaveScore(){
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        StartCoroutine(DelayedSceneChange("MenuScene", 2f));
-    }
-
-     IEnumerator DelayedSceneChange(string sceneName, float delay){
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("MenuScene");
     }
 
     public void UpdateScoreText(){
@@ -182,7 +182,6 @@ public class GameController : MonoBehaviour
     }
 
     public IEnumerator EndOfRound(){
-        yield return new WaitForSeconds(5f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
         planets[] planets = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None);
