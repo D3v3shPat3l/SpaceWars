@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour{
         if (planetCounter <= 1){
             isGameOver = true;
             if (myScoreManager.IsThisHighScore(score)){
-                highScorePanel.SetActive(true);
+                ShowHighScorePanel();
             } else{
                 StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
             }
@@ -102,10 +102,18 @@ public class GameController : MonoBehaviour{
     }
 
     public void SaveScore(){
+        Time.timeScale = 1;
+        isPaused = false;
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        StartCoroutine(DelayedSceneChange("GameOverScene", 2f)); 
+        StartCoroutine(DelayedSceneChange("GameOverScene", 0f)); 
+    }
+
+    public void ShowHighScorePanel(){
+        isPaused = true;
+        highScorePanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void UpdateScoreText(){
