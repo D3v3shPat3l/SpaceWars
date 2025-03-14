@@ -12,9 +12,12 @@ public class GameController : MonoBehaviour{
     private ScoreManager myScoreManager;
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
+    private int powerUp1Used = 0;
+    private int powerUp2Used = 0;
+    private int powerUp3Used = 0;
+    private int destroyUFOPoints = 25;
     public bool isRoundOver = false;
     public bool isPaused = false;
-    private int destroyUFOPoints = 25;
     public int score = 0;
     public int level = 1;
     public float enemyUFOSpeed = 1f;
@@ -33,6 +36,9 @@ public class GameController : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI TotalBonusText;
     [SerializeField] private TextMeshProUGUI CountdownText;
     [SerializeField] private TextMeshProUGUI inLauncherText;
+    [SerializeField] private TextMeshProUGUI powerUp1Text;
+    [SerializeField] private TextMeshProUGUI powerUp2Text;
+    [SerializeField] private TextMeshProUGUI powerUp3Text;
     [SerializeField] private TMP_InputField userName;
     [SerializeField] private GameObject endOfRoundPanel;
     [SerializeField] private GameObject earthLeft;
@@ -46,6 +52,7 @@ public class GameController : MonoBehaviour{
     [SerializeField] private GameObject nepRight;
     [SerializeField] private GameObject highScorePanel;
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject invoPanel;
    
     void Start(){
         currentLasersLoaded = 10;
@@ -73,6 +80,9 @@ public class GameController : MonoBehaviour{
     void Update(){
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.P)){
             TogglePause();
+        }
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.I)){
+            Invo();
         }
         if (planetCounter <= 1){
             isGameOver = true;
@@ -235,19 +245,44 @@ public class GameController : MonoBehaviour{
         UpdateLevelText();
         UpdateLasersText();
     }
+    
     IEnumerator DelayedSceneChange(string sceneName, float delay){
          yield return new WaitForSeconds(delay);
          SceneManager.LoadScene(sceneName);
     }
+
      void TogglePause(){
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0 : 1;
     }
 
-     public void ResumeGame() {
+     public void ResumeGame(){
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void Invo(){
+        isPaused = !isPaused;
+        invoPanel.SetActive(isPaused);
+        Time.timeScale = isPaused ? 0 : 1;
+    }
+
+    public void IncrementPowerUpUsage(string powerUpType){
+        switch (powerUpType){
+            case "PowerUp1":
+                powerUp1Used++;
+                powerUp1Text.text = powerUp1Used.ToString();
+                break;
+            case "PowerUp2":
+                powerUp2Used++;
+                powerUp2Text.text = powerUp2Used.ToString();
+                break;
+            case "PowerUp3":
+                powerUp3Used++;
+                powerUp3Text.text = powerUp3Used.ToString();
+                break;
+        }
     }
 }

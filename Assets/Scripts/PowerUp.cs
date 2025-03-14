@@ -37,7 +37,8 @@ public class PowerUp : MonoBehaviour{
     }
 
     private void ActivatePowerUp(){
-        myGameController.ExtraEnemies(); 
+        myGameController.ExtraEnemies();
+        myGameController.IncrementPowerUpUsage("PowerUp1"); 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

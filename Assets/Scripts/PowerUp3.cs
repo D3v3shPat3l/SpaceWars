@@ -38,6 +38,7 @@ public class PowerUp3 : MonoBehaviour{
 
     private void ActivatePowerUp(){
         myGameController.ActivateScoreMultiplier();
+        myGameController.IncrementPowerUpUsage("PowerUp3"); 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

@@ -38,6 +38,7 @@ public class PowerUp2 : MonoBehaviour{
 
     private void ActivatePowerUp(){
         myGameController.AddLaserShots();
+        myGameController.IncrementPowerUpUsage("PowerUp2"); 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
