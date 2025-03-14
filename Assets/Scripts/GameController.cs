@@ -263,6 +263,7 @@ public class GameController : MonoBehaviour{
     }
 
      void TogglePause(){
+        invoPanel.SetActive(false);
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0 : 1;
@@ -275,6 +276,7 @@ public class GameController : MonoBehaviour{
     }
 
     public void Invo(){
+        pausePanel.SetActive(false);
         isPaused = !isPaused;
         invoPanel.SetActive(isPaused);
         Time.timeScale = isPaused ? 0 : 1;
