@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour{
     private ScoreManager myScoreManager;
     private int enemyUFOThisRound = 10;
     private int enemyUFOLeftInRound = 0;
-    private bool isRoundOver = false;
+    public bool isRoundOver = false;
+    public bool isPaused = false;
     private int destroyUFOPoints = 25;
     public int score = 0;
     public int level = 1;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour{
     [SerializeField] private GameObject nepMiddle;
     [SerializeField] private GameObject nepRight;
     [SerializeField] private GameObject highScorePanel;
+    [SerializeField] private GameObject pausePanel;
    
     void Start(){
         currentLasersLoaded = 10;
@@ -69,6 +71,9 @@ public class GameController : MonoBehaviour{
     }
 
     void Update(){
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.P)){
+            TogglePause();
+        }
         if (planetCounter <= 1){
             isGameOver = true;
             if (myScoreManager.IsThisHighScore(score)){
@@ -211,11 +216,11 @@ public class GameController : MonoBehaviour{
         nepRight.SetActive(true);
         }
         
-        CountdownText.text = "NEXT ROUND IN: 3";
+        CountdownText.text = "NEXT ROUND IN: 3!";
         yield return new WaitForSeconds(1f);
-        CountdownText.text = "NEXT ROUND IN: 2";
+        CountdownText.text = "NEXT ROUND IN: 2!";
         yield return new WaitForSeconds(1f);
-        CountdownText.text = "NEXT ROUND IN: 1";
+        CountdownText.text = "NEXT ROUND IN: 1!";
         yield return new WaitForSeconds(1f);
     
         endOfRoundPanel.SetActive(false);
@@ -233,5 +238,16 @@ public class GameController : MonoBehaviour{
     IEnumerator DelayedSceneChange(string sceneName, float delay){
          yield return new WaitForSeconds(delay);
          SceneManager.LoadScene(sceneName);
+    }
+     void TogglePause(){
+        isPaused = !isPaused;
+        pausePanel.SetActive(isPaused);
+        Time.timeScale = isPaused ? 0 : 1;
+    }
+
+     public void ResumeGame() {
+        isPaused = false;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }
