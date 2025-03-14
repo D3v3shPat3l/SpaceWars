@@ -208,7 +208,10 @@ public class GameController : MonoBehaviour{
         TotalBonusText.text = "Total Bonus: " + totalBonus;
         score += totalBonus;
         UpdateScoreText();
-
+        
+        /*Bug caused because the planet is destroyed and missing the object so can not be set to false.
+        Tried fixing it by hiding the planet but new bugs were created,
+        So I decided to remove this out of my game otherwise no bugs other than this.
         if (score >= 10000){
         earthLeft.SetActive(false);
         earthMiddle.SetActive(false);
@@ -224,7 +227,7 @@ public class GameController : MonoBehaviour{
         nepLeft.SetActive(true);
         nepMiddle.SetActive(true);
         nepRight.SetActive(true);
-        }
+        }*/
         
         CountdownText.text = "NEXT ROUND IN: 3!";
         yield return new WaitForSeconds(1f);
