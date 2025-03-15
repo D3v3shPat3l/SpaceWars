@@ -9,7 +9,7 @@ public class Music : MonoBehaviour{
             instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
-        } else{
+        }else{
             Destroy(gameObject);
         }
     }

@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour{
         defenders = GameObject.FindGameObjectsWithTag("Defenders");
         if (defenders.Length > 0){
             target = defenders[Random.Range(0, defenders.Length)].transform.position;
-        } else{
+        }else{
             Destroy(gameObject); 
             return;
         }

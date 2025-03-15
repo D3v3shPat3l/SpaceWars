@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour{
         if (Instance == null){
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else{
+        }else{
             Destroy(gameObject);
         }
 
@@ -42,7 +42,7 @@ public class ScoreManager : MonoBehaviour{
         if (newScoreEntry.score > existingEntry.score){
             existingEntry.score = newScoreEntry.score;
         }
-    } else {
+    }else{
         highScoreEntryList.Add(newScoreEntry);
     }
     SaveScores();
