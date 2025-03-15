@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameController : MonoBehaviour{
     private EnemyUFOSpawner myEnemyUFOSpawner;
@@ -39,6 +40,7 @@ public class GameController : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI powerUp1Text;
     [SerializeField] private TextMeshProUGUI powerUp2Text;
     [SerializeField] private TextMeshProUGUI powerUp3Text;
+    [SerializeField] private TextMeshProUGUI beatItText;
     [SerializeField] private TMP_InputField userName;
     [SerializeField] private GameObject endOfRoundPanel;
     [SerializeField] private GameObject earthLeft;
@@ -58,7 +60,7 @@ public class GameController : MonoBehaviour{
         currentLasersLoaded = 10;
         lasersLeft -= 10;
         planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
-
+        
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
         ServiceLocator.Register<EnemyUFOSpawner>(myEnemyUFOSpawner);
         myScoreManager = ScoreManager.Instance;
@@ -70,6 +72,7 @@ public class GameController : MonoBehaviour{
         powerUp3Spawner = GameObject.FindAnyObjectByType<PowerUp3Spawner>();
         if (powerUp3Spawner != null) ServiceLocator.Register<PowerUp3Spawner>(powerUp3Spawner);
 
+        ShowLowestHighScore();
         UpdateScoreText();
         UpdateLevelText();
         UpdateLasersText();
@@ -220,26 +223,6 @@ public class GameController : MonoBehaviour{
         score += totalBonus;
         UpdateScoreText();
         
-        /*Bug caused because the planet is destroyed and missing the object so can not be set to false.
-        Tried fixing it by hiding the planet but new bugs were created,
-        So I decided to remove this out of my game otherwise no bugs other than this.
-        if (score >= 10000){
-        earthLeft.SetActive(false);
-        earthMiddle.SetActive(false);
-        earthRight.SetActive(false);
-        marsLeft.SetActive(true);
-        marsMiddle.SetActive(true);
-        marsRight.SetActive(true);
-        }
-        if (score >= 20000){
-        marsLeft.SetActive(false);
-        marsMiddle.SetActive(false);
-        marsRight.SetActive(false);
-        nepLeft.SetActive(true);
-        nepMiddle.SetActive(true);
-        nepRight.SetActive(true);
-        }*/
-        
         CountdownText.text = "NEXT ROUND IN: 3!";
         yield return new WaitForSeconds(1f);
         CountdownText.text = "NEXT ROUND IN: 2!";
@@ -302,6 +285,17 @@ public class GameController : MonoBehaviour{
                 powerUp3Used++;
                 powerUp3Text.text = powerUp3Used.ToString();
                 break;
+        }
+    }
+
+    void ShowLowestHighScore(){
+        List<HighScoreEntry> highScoreEntryList = SaveScoreManager.LoadScores();
+
+        if (highScoreEntryList != null && highScoreEntryList.Count > 0){
+            int lowestHighScore = highScoreEntryList[highScoreEntryList.Count - 1].score;
+            beatItText.text = "Beat It: " + lowestHighScore;
+        }else{
+            beatItText.text = "Beat It: 0";
         }
     }
 }
