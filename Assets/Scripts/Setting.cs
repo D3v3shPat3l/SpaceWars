@@ -13,12 +13,10 @@ public class Setting : MonoBehaviour{
             Music.instance.GetComponent<AudioSource>().mute = !musicOn; 
             musicToggle.onValueChanged.AddListener(ToggleMusic);
         }
-
         if (soundEffectsToggle != null){
             bool soundEffectsOn = PlayerPrefs.GetInt("SoundEffects", 1) == 1;
             soundEffectsToggle.isOn = soundEffectsOn;
             soundEffectsToggle.onValueChanged.AddListener(ToggleSoundEffects);
-
             foreach (AudioSource audioSource in soundEffectAudioSources){
                 if (audioSource != null){
                     audioSource.mute = !soundEffectsOn;

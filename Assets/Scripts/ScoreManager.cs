@@ -31,11 +31,6 @@ public class ScoreManager : MonoBehaviour{
         return score > highScoreEntryList[highScoreEntryList.Count - 1].score;
     }
 
-    /*public void AddScore(HighScoreEntry newScoreEntry){
-        highScoreEntryList.Add(newScoreEntry);
-        SaveScores();
-    }*/
-
     public void AddScore(HighScoreEntry newScoreEntry){
     HighScoreEntry existingEntry = highScoreEntryList.Find(entry => entry.userName.Equals(newScoreEntry.userName, System.StringComparison.OrdinalIgnoreCase));
     if (existingEntry != null){

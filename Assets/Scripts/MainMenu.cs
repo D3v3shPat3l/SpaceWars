@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour{
 
     void Start(){
         ApplySavedAudioSettings();
-
         if (!PlayerPrefs.HasKey("FirstTimeOpened")){
             helpPanel.SetActive(true);  
             PlayerPrefs.SetInt("FirstTimeOpened", 1);  
@@ -45,7 +44,6 @@ public class MainMenu : MonoBehaviour{
     void ApplySavedAudioSettings(){
         if (Music.instance != null)
             Music.instance.GetComponent<AudioSource>().mute = PlayerPrefs.GetInt("Music", 1) == 0;
-
         foreach (AudioSource audio in Object.FindObjectsByType<AudioSource>(FindObjectsSortMode.None))
             if (audio != Music.instance?.GetComponent<AudioSource>())
                 audio.mute = PlayerPrefs.GetInt("SoundEffects", 1) == 0;

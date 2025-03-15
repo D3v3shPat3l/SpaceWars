@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour{
         currentLasersLoaded = 10;
         lasersLeft -= 10;
         planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
-        
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
         ServiceLocator.Register<EnemyUFOSpawner>(myEnemyUFOSpawner);
         myScoreManager = ScoreManager.Instance;
@@ -71,7 +70,6 @@ public class GameController : MonoBehaviour{
         if (powerUp2Spawner != null) ServiceLocator.Register<PowerUp2Spawner>(powerUp2Spawner);
         powerUp3Spawner = GameObject.FindAnyObjectByType<PowerUp3Spawner>();
         if (powerUp3Spawner != null) ServiceLocator.Register<PowerUp3Spawner>(powerUp3Spawner);
-
         ShowLowestHighScore();
         UpdateScoreText();
         UpdateLevelText();
@@ -154,7 +152,7 @@ public class GameController : MonoBehaviour{
             if (lasersLeft >= 10){
             currentLasersLoaded = 10;
             lasersLeft -= 10;
-            } else{
+            }else{
             currentLasersLoaded = lasersLeft;
             lasersLeft = 0;
             }
@@ -166,7 +164,7 @@ public class GameController : MonoBehaviour{
         if (lasersLeft >= 10){
             currentLasersLoaded = 10;
             lasersLeft -= 10;
-        } else{
+        }else{
             currentLasersLoaded = lasersLeft;
             lasersLeft = 0;
         }
@@ -206,7 +204,6 @@ public class GameController : MonoBehaviour{
         planets[] planets = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None);
         int leftOverPlanetBonus = (planets.Length - 1) * PlanetsBonusPoints;
         int totalBonus = leftOverLaserBonus + leftOverPlanetBonus;
-
         if (level >= 3 && level < 6){
             totalBonus *= 2;
         }
@@ -216,20 +213,17 @@ public class GameController : MonoBehaviour{
         else if (level >= 10){
             totalBonus *= 5;
         }
-
         LeftOverLaserBonusText.text = "Left over Laser Bonus: " + leftOverLaserBonus;
         LeftOverPlanetBonusText.text = "Left over Planet Bonus: " + leftOverPlanetBonus;
         TotalBonusText.text = "Total Bonus: " + totalBonus;
         score += totalBonus;
         UpdateScoreText();
-        
         CountdownText.text = "NEXT ROUND IN: 3!";
         yield return new WaitForSeconds(1f);
         CountdownText.text = "NEXT ROUND IN: 2!";
         yield return new WaitForSeconds(1f);
         CountdownText.text = "NEXT ROUND IN: 1!";
         yield return new WaitForSeconds(1f);
-    
         endOfRoundPanel.SetActive(false);
         isRoundOver = false;
         isPaused = false;
@@ -237,7 +231,6 @@ public class GameController : MonoBehaviour{
         enemyUFOSpeed *= enemyUFOSpeedMulti;
         currentLasersLoaded = 10;
         lasersLeft -= 10;
-
         StartRound();
         level++;
         UpdateLevelText();
@@ -290,7 +283,6 @@ public class GameController : MonoBehaviour{
 
     void ShowLowestHighScore(){
         List<HighScoreEntry> highScoreEntryList = SaveScoreManager.LoadScores();
-
         if (highScoreEntryList != null && highScoreEntryList.Count > 0){
             int lowestHighScore = highScoreEntryList[highScoreEntryList.Count - 1].score;
             beatItText.text = "Beat It: " + lowestHighScore;

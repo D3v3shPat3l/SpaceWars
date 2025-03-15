@@ -21,7 +21,6 @@ public class Leaderboard : MonoBehaviour{
         int flashIndex = -1;  
         string lastLeaderboard = PlayerPrefs.GetString("LastLeaderboard", "");
         string currentLeaderboard = "";
-
         if (highScoreEntryList == null || highScoreEntryList.Count == 0){
             for (int i = 0; i < nameTextArray.Length; i++){
                 nameTextArray[i].text = "---";
@@ -35,7 +34,6 @@ public class Leaderboard : MonoBehaviour{
                 nameTextArray[i].text = highScoreEntryList[i].userName;
                 scoreTextArray[i].text = highScoreEntryList[i].score.ToString();
                 currentLeaderboard += highScoreEntryList[i].userName + ":" + highScoreEntryList[i].score + ",";
-
                 if (!string.IsNullOrEmpty(lastLeaderboard)){
                     string[] lastEntries = lastLeaderboard.Split(',');
                     bool playerFound = false;
@@ -65,10 +63,8 @@ public class Leaderboard : MonoBehaviour{
                 scoreTextArray[i].text = "0";
             }
         }
-
         PlayerPrefs.SetString("LastLeaderboard", currentLeaderboard);
         PlayerPrefs.Save();
-
         if (newEntryAdded || scoreUpdated){
             PlaySoundEffect();
             if (flashIndex != -1) {
@@ -95,7 +91,6 @@ public class Leaderboard : MonoBehaviour{
         bool toggleColor = true;
         TextMeshProUGUI nameText = nameTextArray[index];
         TextMeshProUGUI scoreText = scoreTextArray[index];
-
         while (timeElapsed < flashDuration) {
             Color targetColor = toggleColor ? goldColor : greenColor;
             nameText.color = targetColor;
