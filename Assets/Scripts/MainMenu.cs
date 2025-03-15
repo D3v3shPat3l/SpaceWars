@@ -8,6 +8,12 @@ public class MainMenu : MonoBehaviour{
 
     void Start(){
         ApplySavedAudioSettings();
+
+        if (!PlayerPrefs.HasKey("FirstTimeOpened")){
+            helpPanel.SetActive(true);  
+            PlayerPrefs.SetInt("FirstTimeOpened", 1);  
+            PlayerPrefs.Save();  
+        }
     }
 
     void Update(){
