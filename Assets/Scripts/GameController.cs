@@ -194,6 +194,9 @@ public class GameController : MonoBehaviour{
     }
 
     public IEnumerator EndOfRound(){
+        isPaused = true; 
+        pausePanel.SetActive(false);
+        invoPanel.SetActive(false);
         yield return new WaitForSeconds(3f);
         endOfRoundPanel.SetActive(true);
         int leftOverLaserBonus = (lasersLeft + currentLasersLoaded) * LaserBonusPoints;
@@ -246,6 +249,7 @@ public class GameController : MonoBehaviour{
     
         endOfRoundPanel.SetActive(false);
         isRoundOver = false;
+        isPaused = false;
         lasersLeft = 30;
         enemyUFOSpeed *= enemyUFOSpeedMulti;
         currentLasersLoaded = 10;
@@ -263,6 +267,7 @@ public class GameController : MonoBehaviour{
     }
 
      void TogglePause(){
+        if (endOfRoundPanel.activeSelf) return;
         invoPanel.SetActive(false);
         isPaused = !isPaused;
         pausePanel.SetActive(isPaused);
@@ -276,6 +281,7 @@ public class GameController : MonoBehaviour{
     }
 
     public void Invo(){
+        if (endOfRoundPanel.activeSelf) return;
         pausePanel.SetActive(false);
         isPaused = !isPaused;
         invoPanel.SetActive(isPaused);
