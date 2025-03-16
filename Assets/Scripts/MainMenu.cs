@@ -5,6 +5,8 @@ public class MainMenu : MonoBehaviour{
     [SerializeField] private GameObject leaderboardPanel;
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject helpPanel;
+    [SerializeField] private GameObject newsPanel;
+    //[SerializeField] private GameNewsManager gameNewsManager;
 
     void Start(){
         ApplySavedAudioSettings();
@@ -26,12 +28,14 @@ public class MainMenu : MonoBehaviour{
     }
 
      public void Settings(){
+        newsPanel.SetActive(false);
         helpPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
         settingPanel.SetActive(true);
     }
 
     public void Leaderboard(){
+        newsPanel.SetActive(false);
         helpPanel.SetActive(false);
         settingPanel.SetActive(false);
         leaderboardPanel.SetActive(true);
@@ -50,8 +54,16 @@ public class MainMenu : MonoBehaviour{
     }
 
     public void Help(){
+        newsPanel.SetActive(false);
         leaderboardPanel.SetActive(false);
         settingPanel.SetActive(false);
         helpPanel.SetActive(!helpPanel.activeSelf);
+    }
+
+    public void News(){
+        helpPanel.SetActive(false);
+        leaderboardPanel.SetActive(false);
+        settingPanel.SetActive(false);
+        newsPanel.SetActive(true);
     }
 }
