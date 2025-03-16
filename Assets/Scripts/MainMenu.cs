@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour{
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject helpPanel;
     [SerializeField] private GameObject newsPanel;
-    //[SerializeField] private GameNewsManager gameNewsManager;
 
     void Start(){
         ApplySavedAudioSettings();
