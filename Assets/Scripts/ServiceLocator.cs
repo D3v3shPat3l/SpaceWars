@@ -19,4 +19,8 @@ public static class ServiceLocator{
             services.Remove(typeof(T));
         }
     }
+
+    public static bool HasService<T>(){
+    return services.ContainsKey(typeof(T));
+    }
 }

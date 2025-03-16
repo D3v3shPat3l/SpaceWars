@@ -8,7 +8,14 @@ public class PowerUp2 : MonoBehaviour{
     private GameObject[] defenders;
 
     void Start(){
-        myGameController = GameObject.FindFirstObjectByType<GameController>(); 
+        if (ServiceLocator.HasService<GameController>()){
+            myGameController = ServiceLocator.Get<GameController>();
+        }else{
+            Debug.LogError("GameController not found in ServiceLocator.");
+            Destroy(gameObject);
+            return;
+        }
+        
         defenders = GameObject.FindGameObjectsWithTag("Defenders");
         if (defenders.Length > 0){
             target = defenders[Random.Range(0, defenders.Length)].transform.position;
@@ -29,8 +36,7 @@ public class PowerUp2 : MonoBehaviour{
     private void OnTriggerEnter2D(Collider2D col){
         if (col.CompareTag("Defenders")){
             return; 
-        }
-        else if (col.CompareTag("Explosions")){
+        } else if (col.CompareTag("Explosions")){
             ActivatePowerUp();
             Destroy(col.gameObject); 
         }

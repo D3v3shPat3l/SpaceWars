@@ -59,6 +59,7 @@ public class GameController : MonoBehaviour{
     void Start(){
         currentLasersLoaded = 10;
         lasersLeft -= 10;
+        ServiceLocator.Register<GameController>(this);
         planetCounter = GameObject.FindObjectsByType<planets>(FindObjectsSortMode.None).Length;
         myEnemyUFOSpawner = GameObject.FindAnyObjectByType<EnemyUFOSpawner>();
         ServiceLocator.Register<EnemyUFOSpawner>(myEnemyUFOSpawner);
