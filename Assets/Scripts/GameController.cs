@@ -104,8 +104,9 @@ public class GameController : MonoBehaviour{
     }
 
     public void SaveScore(){
-        Time.timeScale = 1;
-        isPaused = false;
+        //Removed the pausing as that made the game not restart next rounds.
+        //Time.timeScale = 1;
+        //isPaused = false;
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
@@ -113,9 +114,9 @@ public class GameController : MonoBehaviour{
     }
 
     public void ShowHighScorePanel(){
-        isPaused = true;
+        //isPaused = true;
         highScorePanel.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     public void UpdateScoreText(){

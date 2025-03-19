@@ -16,7 +16,19 @@ public static class SaveScoreManager{
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
             return data.highScores ?? new List<HighScoreEntry>();
         }
-        return new List<HighScoreEntry>(); 
+        return CreateDefaultScores();
+    }
+    
+    private static List<HighScoreEntry> CreateDefaultScores(){
+    List<HighScoreEntry> defaultScores = new List<HighScoreEntry>{
+        new HighScoreEntry { userName = "---", score = 0 },
+        new HighScoreEntry { userName = "---", score = 0 },
+        new HighScoreEntry { userName = "---", score = 0 },
+        new HighScoreEntry { userName = "---", score = 0 },
+        new HighScoreEntry { userName = "---", score = 0 }
+        };
+        SaveScores(defaultScores); 
+        return defaultScores;
     }
 }
 
