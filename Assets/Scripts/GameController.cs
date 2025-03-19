@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour{
         if (!string.IsNullOrEmpty(userName.text)){
             myScoreManager.AddScore(new HighScoreEntry { score = this.score, userName = userName.text });
         }
-        StartCoroutine(DelayedSceneChange("GameOverScene", 0f)); 
+        SceneManager.LoadScene("GameOverScene");
     }
 
     public void ShowHighScorePanel(){
