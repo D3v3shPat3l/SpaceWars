@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7597bcb47ffd4d04fafba58ee16f3fff
+guid: 82d7efcee1ad6864ba328a52a5d3ea37
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2061690295459604116
-    second: Nepright_0
+      213: 3013506512558569885
+    second: 616616_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Nepright_0
+      name: 616616_0
       rect:
         serializedVersion: 2
-        x: 303
+        x: 0
         y: 0
-        width: 151
-        height: 173
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c69924e79976363e0800000000000000
-      internalID: -2061690295459604116
+      spriteID: d993169f43022d920800000000000000
+      internalID: 3013506512558569885
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Nepright_0: -2061690295459604116
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -2,11 +2,14 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Leaderboard : MonoBehaviour{
     [SerializeField] private TextMeshProUGUI[] nameTextArray;
     [SerializeField] private TextMeshProUGUI[] scoreTextArray;
     [SerializeField] private GameObject soundEffectPrefab; 
+    [SerializeField] private GameObject leaderboardOnlinePanel;
+    [SerializeField] private GameObject leaderboardPanel;
     private Color goldColor = new Color(1f, 0.843f, 0f);
     private Color greenColor = new Color(0.494f, 0.850f, 0.341f);
 
@@ -101,5 +104,10 @@ public class Leaderboard : MonoBehaviour{
         }
         nameText.color = greenColor;
         scoreText.color = greenColor;
+    }
+
+    public void SwitchLeaderboard(){
+        leaderboardOnlinePanel.SetActive(true);
+        leaderboardPanel.SetActive(false);
     }
 }
